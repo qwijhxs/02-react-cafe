@@ -1,22 +1,20 @@
-import css from './VoteOptions.module.css';
+import css from "./VoteOptions.module.css";
+
+import { type VoteType } from "../../types/votes";
 
 interface VoteOptionsProps {
-  onVote: (type: 'good' | 'neutral' | 'bad') => void;
-  onReset: () => void;
-  canReset: boolean;
+    onVote: (type: VoteType) => void,
+    onReset: () => void,
+    canReset: boolean
 }
 
 export default function VoteOptions({ onVote, onReset, canReset }: VoteOptionsProps) {
-  return (
-    <div className={css.container}>
-      <button className={css.button} onClick={() => onVote('good')}>Good</button>
-      <button className={css.button} onClick={() => onVote('neutral')}>Neutral</button>
-      <button className={css.button} onClick={() => onVote('bad')}>Bad</button>
-      {canReset && (
-        <button className={`${css.button} ${css.reset}`} onClick={onReset}>
-          Reset
-        </button>
-      )}
-    </div>
-  );
+    return (
+        <div className={css.container}>
+            <button className={css.button} onClick={() => onVote("good")}>Good</button>
+            <button className={css.button} onClick={() => onVote("neutral")}>Neutral</button>
+            <button className={css.button} onClick={() => onVote("bad")}>Bad</button>
+            {canReset && <button className={`${css.button} ${css.reset}`} onClick={onReset}>Reset</button>}
+        </div>
+    );
 }
